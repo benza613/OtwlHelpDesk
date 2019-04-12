@@ -1,0 +1,11 @@
+<div *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+  <!-- content here -->
+  <td>{{item}}<br/>{{item}}<td>
+</div>
+
+<p>Restricted size with rotation and no ellipses:</p>
+<ngb-pagination [collectionSize]="items.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+
+<hr>
+
+<pre>Current page: {{page}}</pre>
