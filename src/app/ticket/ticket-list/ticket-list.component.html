@@ -1,11 +1,15 @@
-<div *ngFor="let item of items | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-  <!-- content here -->
-  <td>{{item}}<br/>{{item}}<td>
+<div *ngFor="let item of (items | async | slice: pageSize | slice: 0:itemsPerPage); trackBy: ticketTrackFn">
+  <!-- content here   slice: (page-1) * pageSize : (page-1) * pageSize + pageSize-->
+  <span>{{item.Priority}}<br />
+    {{item.Status}}<br />
+    {{item.Id}}<br />
+  </span>
 </div>
 
 <p>Restricted size with rotation and no ellipses:</p>
-<ngb-pagination [collectionSize]="items.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+<ngb-pagination #numPages (pageChange)="onPageChange(currentPage)" [collectionSize]="ticketStore.userTodosCount$" [(page)]="currentPage"
+  [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
 
 <hr>
 
-<pre>Current page: {{page}}</pre>
+<pre>Page: {{ currentPage }} / {{numPages.pageCount}}</pre>

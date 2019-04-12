@@ -1,55 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
+import { TicketsStoreService } from 'src/app/_helper/_store/tickets-store.service';
+import { Ticket } from 'src/app/models/ticket.model';
 
 @Component({
   selector: 'app-ticket-list',
   templateUrl: './ticket-list.component.html',
-  styleUrls: ['./ticket-list.component.scss']
+  styleUrls: ['./ticket-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TicketListComponent implements OnInit {
 
-  constructor() { }
+  // optimization, rerenders only tickets that change instead of the entire list of tickets
+  ticketTrackFn = (i, ticket) => ticket.Id;
+
+  constructor(public ticketStore: TicketsStoreService) { }
 
   ngOnInit() {
   }
 
-  page = 1;
-  pageSize = 5;
+  currentPage = 1;
+  itemsPerPage = 5;
+  pageSize: number;
 
-  items= [
-    'aa',
-    'ab',
-    'av',
-    'aqa',
-    'aaa',
-    'aqaaxzaa',
-    'caaa',
-    'acaa',
-    'acasaa',
-    'aqsaa',
-    'axca',
-     'aa',
-    'aasdb',
-    'av',
-    'aqa',
-    'aaa',
-    'aqaaxzaa',
-    'caaa',
-    'aacaa',
-    'acasaa',
-    'aqsaa',
-    'axca',
-     'aa',
-    'ab',
-    'av',
-    'aqa',
-    'aaa',
-    'aqaaxzaa',
-    'caaa',
-    'acaa',
-    'acasaa',
-    'aqsaa',
-    'axca',
-  ];
+  items = this.ticketStore.userTodos$;
+
+  public onPageChange(pageNum: number): void {
+    this.pageSize = this.itemsPerPage * (pageNum - 1);
+  }
+
+  public changePagesize(num: number): void {
+    this.itemsPerPage = this.pageSize + num;
+  }
+
+
+  //collectionSize = this.ticketStore.userTodosCount$;
 
 }
