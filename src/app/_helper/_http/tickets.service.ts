@@ -20,6 +20,9 @@ export class TicketsService {
   };
 
   index(): Observable<any> {
-    return this.http.post(`${this.apiBaseUrl}/getTickets`, { startDate: '', endDate: '' }, this.httpOptions).pipe(map(r => r));;
+    return this.http.post(`${this.apiBaseUrl}/getTickets`,
+      { startDate: '', endDate: '' },
+      this.httpOptions)
+      .pipe(map(r => r));;
   }
 }

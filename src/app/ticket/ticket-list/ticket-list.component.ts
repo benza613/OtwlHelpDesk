@@ -9,30 +9,23 @@ import { Ticket } from 'src/app/models/ticket.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TicketListComponent implements OnInit {
+  collectionSize: number;
+  currentPage = 1;
 
   // optimization, rerenders only tickets that change instead of the entire list of tickets
   ticketTrackFn = (i, ticket) => ticket.Id;
 
-  constructor(public ticketStore: TicketsStoreService) { }
+  constructor(public ticketStore: TicketsStoreService) {
+    this.ticketStore.userTodosCount$.subscribe(x => {
+      this.collectionSize = x;
+    })
+  }
 
   ngOnInit() {
   }
-
-  currentPage = 1;
   itemsPerPage = 5;
-  pageSize: number;
 
   items = this.ticketStore.userTodos$;
 
-  public onPageChange(pageNum: number): void {
-    this.pageSize = this.itemsPerPage * (pageNum - 1);
-  }
-
-  public changePagesize(num: number): void {
-    this.itemsPerPage = this.pageSize + num;
-  }
-
-
-  //collectionSize = this.ticketStore.userTodosCount$;
 
 }

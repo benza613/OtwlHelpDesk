@@ -29,7 +29,9 @@ export class TicketsStoreService {
     map(todos => this.tickets)
   )
 
-  readonly userTodosCount$ = this.tickets$.subscribe(result => { console.log(result.length); return result.length });
+  readonly userTodosCount$ = this.tickets$.pipe(
+    map(todoLength => this.tickets.length)
+  )
 
   // the getter will return the last value emitted in _tickets subject
   get tickets(): Ticket[] {
