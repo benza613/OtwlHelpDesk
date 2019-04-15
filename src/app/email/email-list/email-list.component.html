@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-header text-white bg-info">
+    Fetch Emails by
+  </div>
+  <div class="card-body">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()" autocomplete="off">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <input type="text" class="form-control" id="searchInp1" placeholder="Search by Sender"
+            formControlName="addrFrom">
+          <small id="searchInp1Help" class="form-text text-muted">
+            Optional. Filter by email Id of sender
+          </small>
+        </div>
+        <div class="form-group col-md-4">
+          <input type="text" class="form-control" id="searchInp2" placeholder="Search by Reciever"
+            formControlName="addrTo">
+          <small id="searchInp2Help" class="form-text text-muted">
+            Optional. Filter by email Id that you have sent mails to
+          </small>
+        </div>
+        <div class="form-group col-md-4">
+          <input type="text" class="form-control" id="searchInp3" placeholder="Search by Subject"
+            formControlName="subject">
+          <small id="searchInp2Help" class="form-text text-muted">
+            Filter emails that contain above text in their Subject Field
+          </small>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+            <button type="submit" class="btn btn-warning">Execute Search</button>
+        </div>
+      </div>
+    </form>
+  </div>

@@ -7,16 +7,23 @@ import { TicketListComponent } from './ticket/ticket-list/ticket-list.component'
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { EmailListComponent } from './email/email-list/email-list.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    TicketListComponent
+    TicketListComponent,
+    EmailListComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -46,7 +46,7 @@ export class TicketsStoreService {
 
   async fetchAll() {
     var res = await this.ticketServ.index().toPromise();
-    console.log(res);
+    console.log('ticketStore Fetchall', res);
 
     if (res.d.errId == "200")
       this.tickets = <Ticket[]>res.d.tickets;

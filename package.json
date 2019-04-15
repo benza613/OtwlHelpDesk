@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --base-href /OtwlHelpDesk/Home.aspx",
+    "start": "ng serve --base-href /OtwlGmailApp/Home.aspx",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

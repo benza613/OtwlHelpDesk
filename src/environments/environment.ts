@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   url: {
-    server: 'http://localhost:3001/OtwlHelpDesk/Home.aspx',
+    server: 'http://localhost:3001/OtwlGmailApp/Home.aspx',
   }
 };
 
