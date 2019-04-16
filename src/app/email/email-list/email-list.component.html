@@ -1,8 +1,5 @@
-<div class="card">
-  <div class="card-header text-white bg-info">
-    Fetch Emails by
-  </div>
-  <div class="card-body">
+<div class="card border-success">
+  <div class="card-body bg-transparent border-success">
     <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()" autocomplete="off">
       <div class="form-row">
         <div class="form-group col-md-4">
@@ -29,8 +26,40 @@
       </div>
       <div class="form-row">
         <div class="form-group col-md-4">
-            <button type="submit" class="btn btn-warning">Execute Search</button>
+          <button type="submit" class="btn btn-warning">Execute Search</button>
         </div>
       </div>
     </form>
   </div>
+</div>
+<br>
+<ngb-pagination class="d-flex justify-content-center" #numPages [collectionSize]="t_CollectionSize"
+  [(page)]="t_currentPage" [pageSize]="t_itemsPerPage" [maxSize]="5" [rotate]="true" [ellipses]="false"
+  [boundaryLinks]="true"></ngb-pagination>
+<div class="card thread-card"
+  *ngFor="let item of (threadList | async | slice: (t_currentPage-1) * t_itemsPerPage : (t_currentPage-1) * t_itemsPerPage + t_itemsPerPage); trackBy: threadTrackFn; let i = index">
+  <div class="card-body no-gutters">
+    <div class="row ">
+      <div class="col-md-5">
+        <div class="row align-items-center">
+          <div class="col-sm-2"><b>From</b></div>
+          <div class="col-sm-10 MailHeaders"><i>{{item.Msg_From}}</i></div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="row align-items-center">
+          <div class="col-10"><i>{{item.Subject}}</i></div>
+          <div class="col">
+
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-outline-primary btn-sm" (click)="onClick_GetThreadMessages(item)">V</button>
+              <button type="button" class="btn btn-outline-primary btn-sm">M</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

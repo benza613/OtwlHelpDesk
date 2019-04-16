@@ -1,0 +1,26 @@
+@media (max-width: 767px) {
+  .MailHeaders {
+    border-bottom: thin solid black;
+    border-top: thin solid black;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .MailHeaders {
+    border-right: thin solid black;
+  }
+}
+
+.no-gutters {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.test {
+  border: thin solid red;
+}
+
+.thread-card {
+  margin-bottom: 5px;
+}
