@@ -1,3 +1,5 @@
+import { Message } from './message.model';
+
 export interface Thread {
     ThreadId?: string;
     Subject: string;
@@ -7,5 +9,5 @@ export interface Thread {
     MessagesCount: string;
     errId: string;
     errMsg: string;
-    Messages: string[];
+    Messages: Message[];
 }

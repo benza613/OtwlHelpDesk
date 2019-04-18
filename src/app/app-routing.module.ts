@@ -3,11 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { TicketListComponent } from './ticket/ticket-list/ticket-list.component';
 import { EmailListComponent } from './email/email-list/email-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EmailViewComponent } from './email/email-view/email-view.component';
 
 const routes: Routes = [
   {
     path: '',
     component: EmailListComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'view/:id',
+    component: EmailViewComponent,
     pathMatch: 'full'
   },
   {

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailsService } from 'src/app/_helper/_http/emails.service';
 import { EmailsStoreService } from 'src/app/_helper/_store/emails-store.service';
 
+
 @Component({
   selector: 'app-email-list',
   templateUrl: './email-list.component.html',
@@ -22,8 +23,8 @@ export class EmailListComponent implements OnInit {
   threadTrackFn = (i, thread) => thread.ThreadId;
 
   constructor(private formBuilder: FormBuilder,
-    private emailServ: EmailsService,
-    public emailStore: EmailsStoreService) {
+    public emailStore: EmailsStoreService
+    ) {
     this.emailStore.threadsCount$.subscribe(x => {
       this.t_CollectionSize = x;
       console.log(x);

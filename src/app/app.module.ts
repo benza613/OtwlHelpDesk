@@ -10,12 +10,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmailListComponent } from './email/email-list/email-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { EmailViewComponent } from './email/email-view/email-view.component';
+import { SafeHtmlPipe } from './_helper/_pipe/safe-html.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     TicketListComponent,
     EmailListComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EmailViewComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

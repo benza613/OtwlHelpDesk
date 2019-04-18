@@ -3,13 +3,15 @@ import { BehaviorSubject } from 'rxjs'
 import { shareReplay, map } from 'rxjs/operators'
 import { EmailsService } from '../_http/emails.service';
 import { Thread } from 'src/app/models/thread.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailsStoreService {
 
-  constructor(private emailServ: EmailsService) { }
+  constructor(private emailServ: EmailsService,
+    private router: Router) { }
 
 
   // - We set the initial state in BehaviorSubject's constructor
@@ -28,14 +30,18 @@ export class EmailsStoreService {
     map(th => this.threads.length)
   )
 
+  readonly getMsgList$ = (ThreadId) => this.threads$.pipe(
+    map(tx => this.threads.find(t => t.ThreadId == ThreadId).Messages)
+  )
+
   // the getter will return the last value emitted in _tickets subject
-  get threads(): Thread[] {
+  private get threads(): Thread[] {
     return this._threads.getValue();
   }
 
   // assigning a value to this.tickets will push it onto the observable 
   // and down to all of its subsribers (ex: this.tickets = [])
-  set threads(val: Thread[]) {
+  private set threads(val: Thread[]) {
     this._threads.next(val);
   }
 
@@ -50,13 +56,28 @@ export class EmailsStoreService {
 
   async updateThreadEmails(ThreadId) {
     var res = await this.emailServ.fetchThreadEmails(ThreadId).toPromise();
+    console.log(res);
 
     if (res.d.errId == "200") {
+
       const index = this.threads.indexOf(this.threads.find(t => t.ThreadId === ThreadId));
-      this.threads[index].Messages = {
-        ...res.d.Messages
+      console.log(index)
+      for (let ix = 0; ix < res.d.msgList.length; ix++) {
+        this.threads[index].Messages.push(res.d.msgList[ix]);
       }
+
       this.threads = [...this.threads];
+
+      this.router.navigate(['view/' + ThreadId]);
     }
   }
+
+  // async getMsgList(ThreadId) {
+  //   return this.threads$.pipe(
+  //     map(tx => this.threads.filter(t => t.ThreadId == ThreadId))
+  //   )
+
+  // }
+
+
 }
