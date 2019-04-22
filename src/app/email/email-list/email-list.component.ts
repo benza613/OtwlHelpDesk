@@ -2,7 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailsService } from 'src/app/_helper/_http/emails.service';
 import { EmailsStoreService } from 'src/app/_helper/_store/emails-store.service';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EmailMapComponent } from '../email-map/email-map.component';
 
 @Component({
   selector: 'app-email-list',
@@ -23,8 +24,8 @@ export class EmailListComponent implements OnInit {
   threadTrackFn = (i, thread) => thread.ThreadId;
 
   constructor(private formBuilder: FormBuilder,
-    public emailStore: EmailsStoreService
-    ) {
+    public emailStore: EmailsStoreService,
+    private modalService: NgbModal) {
     this.emailStore.threadsCount$.subscribe(x => {
       this.t_CollectionSize = x;
       console.log(x);
@@ -45,9 +46,9 @@ export class EmailListComponent implements OnInit {
   initSearchForm() {
 
     this.searchForm = this.formBuilder.group({
-      addrFrom: [''],
+      addrFrom: ['hello@freshdesk.com'],
       addrTo: [''],
-      subject: [''],
+      subject: ['Invitation: Customer First Summit by Freshworks'],
     });
   }
 
@@ -76,5 +77,20 @@ export class EmailListComponent implements OnInit {
   onClick_GetThreadMessages(threadData) {
     console.log(threadData.ThreadId);
     this.emailStore.updateThreadEmails(threadData.ThreadId);
+  }
+
+  onClick_MapThread(threadData) {
+    const modalRef = this.modalService.open(EmailMapComponent, { size: "lg" });
+    modalRef.componentInstance.threadData = threadData; // should be the id
+
+    modalRef.result.then((result) => {
+      console.log(result);
+
+      if (result.action == "submit" && result.data.length > 0) {
+
+      }
+    }).catch((error) => {
+      console.log('dismiss');
+    });
   }
 }

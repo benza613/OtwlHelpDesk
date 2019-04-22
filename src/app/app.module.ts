@@ -12,6 +12,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EmailViewComponent } from './email/email-view/email-view.component';
 import { SafeHtmlPipe } from './_helper/_pipe/safe-html.pipe';
+import { EmailMapComponent } from './email/email-map/email-map.component';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +23,8 @@ import { SafeHtmlPipe } from './_helper/_pipe/safe-html.pipe';
     EmailListComponent,
     NotFoundComponent,
     EmailViewComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    EmailMapComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +32,11 @@ import { SafeHtmlPipe } from './_helper/_pipe/safe-html.pipe';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgSelectModule,
     FormsModule
   ],
   providers: [],
+  entryComponents: [EmailMapComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

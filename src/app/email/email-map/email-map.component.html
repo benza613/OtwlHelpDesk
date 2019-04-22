@@ -1,0 +1,77 @@
+<div class="modal-header">
+  <h4 class="modal-title">Map Email Conversation ?</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <table class="table table-striped table-sm">
+    <tbody>
+      <tr>
+        <td class="form-label1">
+          <p class="lead">From</p>
+        </td>
+        <td>
+          <input type="text" readonly class="form-control-plaintext" id="emailfrom" [(ngModel)]="threadData.Msg_From">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="lead">To</p>
+        </td>
+        <td>
+          <input type="text" readonly class="form-control-plaintext" id="emailto" [(ngModel)]="threadData.Msg_To">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="lead">Date</p>
+        </td>
+        <td>
+          <input type="text" readonly class="form-control-plaintext" id="emailfrom" [(ngModel)]="threadData.Msg_Date">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="lead">Subject</p>
+        </td>
+        <td>
+          <textarea readonly class="form-control-plaintext" id="emailfrom" [(ngModel)]="threadData.Subject"> </textarea>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="iRefType"> Select Reference Type </label>
+      <ng-select id="iRefType" [items]="tallyJobList" [closeOnSelect]="true" bindLabel="jobNo" placeholder="Select Jobs"
+        [(ngModel)]="selectedRefType">
+      </ng-select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="iRefNo"> Reference Number </label>
+      <input type="text" class="form-control" id="iRefNo" (keyup)="onRefChange($event)" [(ngModel)]="refNo" autocomplete="off">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="iRefval"> Verify Reference</label>
+
+      <button id="iRefval" type="menu" class="btn btn-block" [class.btn-outline-success]="refStatus"
+        [class.btn-outline-danger]="!refStatus" (click)="validateJobNo()">
+        Validate
+      </button>
+    </div>
+  </div>
+
+
+
+</div>
+<div class="modal-footer">
+  <small>Reference Number must be verified before submitting</small>
+  <button class="btn float-right" [class.btn-success]="refStatus" [class.btn-outline-danger]="!refStatus"
+    [disabled]="!refStatus" (click)="submitRef()">
+    Submit
+  </button>
+</div>

@@ -31,4 +31,11 @@ export class EmailsService {
       this.httpOptions)
       .pipe(map(r => r));;
   }
+
+  fetchRefNoStatus(RefNo, RefType): Observable<any> {
+    return this.http.post(`${this.apiBaseUrl}/getRefNoStatus`,
+      { RefNo, RefType },
+      this.httpOptions)
+      .pipe(map(r => r));;
+  }
 }
