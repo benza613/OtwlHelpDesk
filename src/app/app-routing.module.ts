@@ -4,6 +4,7 @@ import { TicketListComponent } from './ticket/ticket-list/ticket-list.component'
 import { EmailListComponent } from './email/email-list/email-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmailViewComponent } from './email/email-view/email-view.component';
+import { EmailEditorComponent } from './email/email-editor/email-editor.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,16 @@ const routes: Routes = [
   {
     path: 'view/:id',
     component: EmailViewComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'preview',
+    component: EmailEditorComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'preview/:id',
+    component: EmailEditorComponent,
     pathMatch: 'full'
   },
   {

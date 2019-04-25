@@ -1,0 +1,23 @@
+.col-md-1 {
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  border: thin dotted silver;
+
+  b {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+  }
+}
+
+
+.form-row {
+  padding-bottom: 15px;
+}
+
+.form-row div {
+}

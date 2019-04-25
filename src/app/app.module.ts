@@ -1,20 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TicketListComponent } from './ticket/ticket-list/ticket-list.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { StorageServiceModule } from 'ngx-webstorage-service';
+
+import { TicketListComponent } from './ticket/ticket-list/ticket-list.component';
 import { EmailListComponent } from './email/email-list/email-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { EmailViewComponent } from './email/email-view/email-view.component';
 import { SafeHtmlPipe } from './_helper/_pipe/safe-html.pipe';
 import { EmailMapComponent } from './email/email-map/email-map.component';
+import { EmailEditorComponent } from './email/email-editor/email-editor.component';
+import { LocalStorageService } from './_helper/_util/local-storage.service';
 
-import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +30,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NotFoundComponent,
     EmailViewComponent,
     SafeHtmlPipe,
-    EmailMapComponent
+    EmailMapComponent,
+    EmailEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +40,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
     HttpClientModule,
     ReactiveFormsModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    RichTextEditorAllModule,
+    StorageServiceModule
   ],
-  providers: [],
+  providers: [LocalStorageService],
   entryComponents: [EmailMapComponent],
   bootstrap: [AppComponent]
 })

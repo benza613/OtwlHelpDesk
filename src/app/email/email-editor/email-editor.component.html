@@ -1,0 +1,48 @@
+<div class="form-row">
+  <div class="col-md-1">
+    <b>Sender </b>
+  </div>
+  <div class="col-md-11">
+    {{msgPacket.from}}
+  </div>
+</div>
+<div class="form-row">
+  <div class="col-md-1">
+    <b>TO</b>
+  </div>
+  <div class="col-md-11">
+    <ng-select id="iEmpFrom" [items]="tallyJobList" [multiple]="true" [closeOnSelect]="false" bindLabel="jobNo"
+      placeholder="To" [(ngModel)]="msgPacket.to">
+    </ng-select>
+  </div>
+</div>
+<div class="form-row">
+  <div class="col-md-1">
+    <b>CC </b>
+  </div>
+  <div class="col-md-5">
+    <ng-select id="iEmpFrom" [items]="tallyJobList" [multiple]="true" [closeOnSelect]="false" bindLabel="jobNo"
+      placeholder="Specify CC" [(ngModel)]="msgPacket.cc">
+    </ng-select>
+  </div>
+  <div class="col-md-1">
+    <b>BCC</b>
+  </div>
+  <div class="col-md-5">
+    <ng-select id="iEmpFrom" [items]="tallyJobList" [multiple]="true" [closeOnSelect]="false" bindLabel="jobNo"
+      placeholder="Specify BCC" [(ngModel)]="msgPacket.bcc">
+    </ng-select>
+  </div>
+</div>
+<div class="form-row">
+  <div class="col-md-1">
+    <b>SUBJECT</b>
+  </div>
+  <div class="col-md-11">
+    <input type="text" class="form-control" placeholder="">
+  </div>
+</div>
+<div class="form-row" style="max-width:100%">
+  <ejs-richtexteditor #toolsRTE id='senderRTE' [(value)]='EditorValue' (actionComplete)="actionCompleted($event)"
+    [toolbarSettings]='EditorTools'></ejs-richtexteditor>
+</div>

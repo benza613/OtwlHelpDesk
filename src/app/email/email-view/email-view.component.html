@@ -1,13 +1,18 @@
 <div class="card email-card" *ngFor="let eml of (emailList | async)" style="max-width:100%">
   <div class="card-header no-gutters">
-    {{eml.from}} 
+    {{eml.from}}
     <button type="button" class="btn btn-sm btn-outline-primary float-right" (click)="eml.isOpen = !eml.isOpen">
-Toggle
-</button>
+      Toggle
+    </button>
   </div>
   <div class="card-body no-gutters" style="max-width:100%" [ngbCollapse]="!eml.isOpen">
     <div class="row" [innerHTML]="eml.body | safeHtml" style="max-width:100%">
-      
+
     </div>
+  </div>
+</div>
+<div class="card email-card" style="max-width:100%">
+  <div class="card-body no-gutters" style="max-width:100%">
+    <ejs-richtexteditor #toolsRTE id='alltoolRTE' [(value)]='EditorValue' (actionComplete)="actionCompleted($event)" [toolbarSettings]='EditorTools'></ejs-richtexteditor>
   </div>
 </div>
