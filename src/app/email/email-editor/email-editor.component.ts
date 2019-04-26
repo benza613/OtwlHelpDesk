@@ -16,7 +16,8 @@ export class EmailEditorComponent implements OnInit {
     bcc: [],
     subject: "",
   };
-//https://www.npmjs.com/package/angular-file-uploader
+  //TO DO implement file upload size testing 
+  //https://www.npmjs.com/package/angular-file-upload er
   public EditorTools: object = {
     items: [
       'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
