@@ -72,12 +72,18 @@ export class EmailsStoreService {
     }
   }
 
-  // async getMsgList(ThreadId) {
-  //   return this.threads$.pipe(
-  //     map(tx => this.threads.filter(t => t.ThreadId == ThreadId))
-  //   )
+  async sendEmail(to, cc, bcc, subject, body, inlineAttachments) {
+    var res = await this.emailServ.sendNewMail(to, cc, bcc, subject, body,inlineAttachments).toPromise();
+    console.log(res);
 
-  // }
+    if (res.d.errId == "200") {
+
+    } else {
+
+    }
+
+  }
+
 
 
 }

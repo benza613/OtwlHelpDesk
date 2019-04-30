@@ -11,7 +11,7 @@
     <b>TO</b>
   </div>
   <div class="col-md-11">
-    <ng-select id="iEmpFrom" [items]="tallyJobList" [multiple]="true" [closeOnSelect]="false" bindLabel="jobNo"
+    <ng-select id="iMsgTo" [items]="msgToList" [multiple]="true" [closeOnSelect]="false" bindLabel="emailId"
       placeholder="To" [(ngModel)]="msgPacket.to">
     </ng-select>
   </div>
@@ -45,4 +45,7 @@
 <div class="form-row" style="max-width:100%">
   <ejs-richtexteditor #toolsRTE id='senderRTE' [(value)]='EditorValue' (actionComplete)="actionCompleted($event)"
     [toolbarSettings]='EditorTools'></ejs-richtexteditor>
+</div>
+<div class="form-row float-right" style="max-width:100%">
+  <button type="button" class="btn btn-primary btn-sm" (click)="onClick_SendEmail()">Send Email</button>
 </div>
