@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+This is for dig sign prj pls ignore
+https://www.c-sharpcorner.com/article/convert-html-string-to-pdf-via-itextsharp-library-and-downlo/
+https://stackoverflow.com/questions/52952809/itextsharp-signing-pdf-with-signed-hash
+https://stackoverflow.com/questions/27019229/itextsharp-sign-pdf-created-in-memorystream
+https://www.codeproject.com/Articles/14488/E-signing-PDF-documents-with-iTextSharp
+
